@@ -1,9 +1,12 @@
 package de.everytap.broteinheiten_datenbank;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.WindowManager;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import de.everytap.broteinheiten_datenbank.fragments.SettingsFragment;
 import roboguice.activity.RoboActionBarActivity;
@@ -30,5 +33,34 @@ public class SettingsActivity extends RoboActionBarActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         getFragmentManager().beginTransaction().replace(R.id.settings_fragment_space, new SettingsFragment()).commit();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.settings_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.menu_credits:
+
+                new AlertDialog.Builder(this)
+                        .setTitle("Credits")
+                        .setMessage(R.string.credits)
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .create().show();
+
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,6 +1,8 @@
 package de.everytap.broteinheiten_datenbank.database;
 
 
+import android.util.Log;
+
 import com.google.gson.JsonArray;
 
 import java.util.ArrayList;
@@ -22,13 +24,20 @@ public class JsonParser {
 
         //Durch alle Einträge durch
         for (int i = 0; i < size; i++) {
-            String name = jsonArray.get(i).getAsJsonArray().get(0).getAsString();
-            String be = jsonArray.get(i).getAsJsonArray().get(1).getAsString();
+            try {
+                String name = jsonArray.get(i).getAsJsonArray().get(0).getAsString();
+                float kh = jsonArray.get(i).getAsJsonArray().get(1).getAsFloat(); //Kohlenhydrate
 
-            foodList.add(new Food(name, be, false));
+                Food food = new Food(name, 0, false);
+                food.setKh(kh);
+                foodList.add(food);
+            } catch (Exception e) {
+                Log.e("JsonParser", "Failed to parse Json");
+                e.printStackTrace();
+                return null;
+            }
         }
 
         return foodList;
     }
-
 }

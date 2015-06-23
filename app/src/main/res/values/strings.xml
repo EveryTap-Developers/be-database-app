@@ -9,6 +9,9 @@
 
     <string name="credits">
         - lnavigationdrawer by lewisjdeane\n
+        - FloatingActionButton by Oleksandr Melnykov under MIT License\n
+        - MaterialNavigationDrawer by neokree under Apache License v2.0\n
+        - PagerSlidingTabStrip by Andreas Stuetz under Apache License v2.0\n
         - Icons by Android Asset Studio with Creative Commons Attribution 3.0 Unported License\n
         - Ion by koush\n\n
 

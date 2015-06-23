@@ -46,7 +46,7 @@ public class ImplMangerWorkEventListener implements DatabaseManager.ManagerWorkE
 
     @Override
     public void onJsonParseError() {
-        managerWorkUiListener.onTextForSimpleAlertDialog("Fehler beim Parsen der Datenbank!");
+        managerWorkUiListener.onTextForSimpleAlertDialog("Fehler beim Parsen der externen Datenbank!");
     }
 
     @Override

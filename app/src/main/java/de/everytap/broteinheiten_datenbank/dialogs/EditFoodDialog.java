@@ -33,7 +33,7 @@ public class EditFoodDialog {
         if (originalFood != null) { //originalFood ist null, wenn ein neues Gericht erstellt wird
             builder.setTitle("Gericht bearbeiten");
             name.setText(originalFood.getName());
-            be.setText(originalFood.getBe());
+            be.setText(Float.toString(originalFood.getBe()));
         } else {
             builder.setTitle("Neues Gericht");
         }
@@ -156,7 +156,7 @@ public class EditFoodDialog {
         }
 
         String foodName = foodNameEditText.getText().toString();
-        String foodBe = foodBeEditText.getText().toString();
+        float foodBe = Float.parseFloat(foodBeEditText.getText().toString());
 
         return new Food(foodName, foodBe, originalFood == null || originalFood.isUserCreated()); //Wenn originalFood null dann ergebnis null, wenn nicht null, dann zur nächsten bedingung LIKE A BOSS!
     }

@@ -130,7 +130,7 @@ public class BeDataSource {
     private Food oneEntryOfcursorToFood(Cursor cursor) {
         int id = cursor.getInt(0);
         String name = cursor.getString(1);
-        String be = cursor.getString(2);
+        float be = cursor.getFloat(2);
         boolean userCreated = cursor.getInt(3) == 1;
         //return new Food(cursor.getString(0), cursor.getString(1));
         return new Food(id, name, be, userCreated);

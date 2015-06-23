@@ -68,7 +68,7 @@ public class EditFoodDialogFragment extends RoboDialogFragment {
         if (originalFood != null) { //originalFood may be null when creating new Food
             builder.setTitle("Gericht bearbeiten");
             foodName.setText(originalFood.getName());
-            foodBe.setText(originalFood.getBe());
+            foodBe.setText(Float.toString(originalFood.getBe()));
         } else {
             builder.setTitle("Neues Gericht");
         }
@@ -171,7 +171,7 @@ public class EditFoodDialogFragment extends RoboDialogFragment {
         }
 
         String foodName = foodNameEditText.getText().toString();
-        String foodBe = foodBeEditText.getText().toString();
+        float foodBe = Float.parseFloat(foodBeEditText.getText().toString());
 
         Food foodToSend = new Food(foodName, foodBe, (originalFood == null || originalFood.isUserCreated()));
         if (originalFood != null) {

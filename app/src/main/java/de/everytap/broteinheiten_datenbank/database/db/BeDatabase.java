@@ -17,9 +17,9 @@ public class BeDatabase extends SQLiteOpenHelper{
     public static final String COLUMN_USER_CREATED = "_user_created";
 
     private static final String DATABASE_NAME = "food_be.db";
-    private static final int DATABASE_VERSION = 2; //2
+    private static final int DATABASE_VERSION = 3; //Current: 3, History: 3(be String -> float)
 
-    private static final String DATABASE_CREATE = "CREATE TABLE " + TABLE_BE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_FOOD + " TEXT NOT NULL, " + COLUMN_BE + " TEXT NOT NULL, " + COLUMN_USER_CREATED + " INTEGER NON NULL);";
+    private static final String DATABASE_CREATE = "CREATE TABLE " + TABLE_BE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_FOOD + " TEXT NOT NULL, " + COLUMN_BE + " REAL NOT NULL, " + COLUMN_USER_CREATED + " INTEGER NON NULL);";
 
     public BeDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

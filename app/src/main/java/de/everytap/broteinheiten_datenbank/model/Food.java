@@ -15,7 +15,7 @@ public class Food implements Parcelable{
 
     private int id = -1;
     private String name;
-    private String be; //Broteinheiten
+    private float be; //Broteinheiten
     private boolean userCreated;
     private ArrayList<Integer> categories = new ArrayList<Integer>();
 
@@ -23,13 +23,13 @@ public class Food implements Parcelable{
         this.id = id;
     }
 
-    public Food(String name, String be, boolean userCreated) {
+    public Food(String name, float be, boolean userCreated) {
         this.name = name;
         this.be = be;
         this.userCreated = userCreated;
     }
 
-    public Food(int id, String name, String be, boolean userCreated) {
+    public Food(int id, String name, float be, boolean userCreated) {
         this.id = id;
         this.name = name;
         this.be = be;
@@ -39,7 +39,7 @@ public class Food implements Parcelable{
     public Food(Parcel parcel) {
         id = parcel.readInt();
         name = parcel.readString();
-        be = parcel.readString();
+        be = parcel.readFloat();
         userCreated = parcel.readInt() != 0;
         parcel.readList(categories, Integer.class.getClassLoader());
     }
@@ -60,12 +60,20 @@ public class Food implements Parcelable{
         this.name = name;
     }
 
-    public String getBe() {
+    public float getBe() {
         return be;
     }
 
-    public void setBe(String be) {
+    public void setBe(float be) {
         this.be = be;
+    }
+
+    public float getKh() { //Kohlenhydrate
+        return be*12;
+    }
+
+    public void setKh(float kh) {
+        this.be = kh/12;
     }
 
     public boolean isUserCreated() {
@@ -113,7 +121,7 @@ public class Food implements Parcelable{
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
         dest.writeString(name);
-        dest.writeString(be);
+        dest.writeFloat(be);
         dest.writeInt(userCreated ? 1 : 0);
         dest.writeList(categories);
     }

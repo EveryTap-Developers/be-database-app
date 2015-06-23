@@ -102,6 +102,5 @@ public class FoodListFragment extends RoboFragment implements UpdateBundleListen
         //todo: gucken, was sich verändert hat -> notify auf RecyclerView
         unpackBundle(bundle);
         buildUi();
-
     }
 }
