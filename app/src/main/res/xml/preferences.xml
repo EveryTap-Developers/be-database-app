@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Datenbank" >
+
+        <Preference android:title="Datenbank löschen" android:summary="Löscht die Datenbank auf dem lokalen Gerät, um sie neu herunterzuladen." android:key="delete_database" />
+
+        </PreferenceCategory>
+
+</PreferenceScreen>

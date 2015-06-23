@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">Broteinheiten-Datenbank</string>
+    <string name="settings">Einstellungen</string>
+
+    <string-array name="spinner_filter_entries">
+        <item>Alle</item>
+        <item>Eigene</item>
+    </string-array>
+
+    <string name="credits">
+        - lnavigationdrawer by lewisjdeane\n
+        - Icons by Android Asset Studio with Creative Commons Attribution 3.0 Unported License\n
+        - Ion by koush\n\n
+
+        Copyright 2013 Koushik Dutta (2013)\n\n
+
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at\n\n
+
+       http://www.apache.org/licenses/LICENSE-2.0\n\n
+
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.\n\n\n
+
+
+        - roboguice by Square Open Source\n\n
+
+        Copyright 2009-2014 roboguice committers\n\n
+
+        Licensed under the Apache License, Version 2.0 (the "License");
+        you may not use this file except in compliance with the License.
+        You may obtain a copy of the License at \n\n
+
+        http://www.apache.org/licenses/LICENSE-2.0\n\n
+
+        Unless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an "AS IS" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        See the License for the specific language governing permissions and
+        limitations under the License.\n\n\n
+
+
+        -PersistentSearch by Quinny898\n\n
+
+        Copyright 2015 Kieron Quinn\n\n
+
+        Licensed under the Apache License, Version 2.0 (the "License");
+        you may not use this file except in compliance with the License.
+        You may obtain a copy of the License at\n\n
+
+        http://www.apache.org/licenses/LICENSE-2.0\n\n
+
+        Unless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an "AS IS" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        See the License for the specific language governing permissions and
+        limitations under the License.
+    </string>
+</resources>
