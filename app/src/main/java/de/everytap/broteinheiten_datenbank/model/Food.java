@@ -69,11 +69,19 @@ public class Food implements Parcelable{
     }
 
     public float getKh() { //Kohlenhydrate
-        return be*12;
+        return be/12;
     }
 
     public void setKh(float kh) {
-        this.be = kh/12;
+        this.be = kh*12;
+    }
+
+    public float getKe() { //Kohlenhydrateinheiten
+        return be/10;
+    }
+
+    public void setKe(float ke) {
+        this.be = ke*10;
     }
 
     public boolean isUserCreated() {
