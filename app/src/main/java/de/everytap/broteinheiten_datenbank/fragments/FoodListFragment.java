@@ -18,7 +18,7 @@ import de.everytap.broteinheiten_datenbank.R;
 import de.everytap.broteinheiten_datenbank.adapter.BeAdapter;
 import de.everytap.broteinheiten_datenbank.interfaces.OnFoodItemClickListener;
 import de.everytap.broteinheiten_datenbank.interfaces.UpdateBundleListener;
-import de.everytap.broteinheiten_datenbank.interfaces.ViewPagerViewReferenceReceiveable;
+import de.everytap.broteinheiten_datenbank.interfaces.ViewPagerViewReferenceReceivable;
 import de.everytap.broteinheiten_datenbank.model.Food;
 import roboguice.fragment.RoboFragment;
 import roboguice.inject.InjectView;
@@ -53,7 +53,7 @@ public class FoodListFragment extends RoboFragment implements UpdateBundleListen
         //notify main for FAB RecyclerView reference
         Fragment parentFragment = getParentFragment();
         if (parentFragment != null) {
-            ViewPagerViewReferenceReceiveable receiver = (ViewPagerViewReferenceReceiveable) parentFragment;
+            ViewPagerViewReferenceReceivable receiver = (ViewPagerViewReferenceReceivable) parentFragment;
             receiver.sendView(recyclerView, id);
         }
     }

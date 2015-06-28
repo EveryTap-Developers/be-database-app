@@ -5,7 +5,7 @@ import android.view.View;
 /**
  * Created by Admin on 06.04.2015.
  */
-public interface ViewPagerViewReferenceReceiveable {
+public interface ViewPagerViewReferenceReceivable {
 
     public void sendView(View view, int idSender);
 

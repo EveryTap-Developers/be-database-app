@@ -39,12 +39,12 @@ import de.everytap.broteinheiten_datenbank.interfaces.ImplMangerWorkEventListene
 import de.everytap.broteinheiten_datenbank.interfaces.ManagerWorkUiListener;
 import de.everytap.broteinheiten_datenbank.interfaces.OnEditFoodDialogListener;
 import de.everytap.broteinheiten_datenbank.interfaces.OnFoodItemClickListener;
-import de.everytap.broteinheiten_datenbank.interfaces.ViewPagerViewReferenceReceiveable;
+import de.everytap.broteinheiten_datenbank.interfaces.ViewPagerViewReferenceReceivable;
 import de.everytap.broteinheiten_datenbank.model.Food;
 import roboguice.fragment.RoboFragment;
 import roboguice.inject.InjectView;
 
-public class DatabaseFragmentSliding extends RoboFragment implements DrawerLayout.DrawerListener, ViewPagerViewReferenceReceiveable, OnFoodItemClickListener, OnEditFoodDialogListener {
+public class DatabaseFragmentSliding extends RoboFragment implements DrawerLayout.DrawerListener, ViewPagerViewReferenceReceivable, OnFoodItemClickListener, OnEditFoodDialogListener {
 
     private static final String URL_TO_DATABASE_JSON = "http://everytap.de/datenbank.txt";
 
