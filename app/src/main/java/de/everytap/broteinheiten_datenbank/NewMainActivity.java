@@ -32,7 +32,7 @@ import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 
 @ContentView(R.layout.activity_new_main)
-public class NewMainActivity extends RoboAppCompatActivity implements OnFoodItemClickListener {
+public class NewMainActivity extends RoboAppCompatActivity implements OnFoodItemClickListener, SearchBox.SearchListener {
 
     private static final String URL_TO_DATABASE_JSON = "http://everytap.de/datenbank.txt";
 
@@ -50,9 +50,9 @@ public class NewMainActivity extends RoboAppCompatActivity implements OnFoodItem
         searchBox.enableVoiceRecognition(this);
         searchBox.setLogoText("Be-Datenbank");
         searchBox.setMenuVisibility(View.INVISIBLE);
+        searchBox.setSearchListener(this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
     }
 
     @Override
@@ -94,12 +94,13 @@ public class NewMainActivity extends RoboAppCompatActivity implements OnFoodItem
     private void displayFoods(boolean calledByUpdater) {
 
         if (source != null && source.isDbOpen()) {
-            ArrayList<Food> foodList = source.getData(searchBox.getSearchText(), false);
+            String searchTerm = searchBox.getSearchText();
+            ArrayList<Food> foodList = source.getData(searchTerm, false);
             if (foodList == null) {
                 buildTextAlertDialog("Konnte Daten nicht lesen!").show();
                 return;
             }
-            if (foodList.size() == 0) {
+            if (searchTerm.isEmpty() && foodList.size() == 0) {
                 if (calledByUpdater) {
                     buildTextAlertDialog("Datenbank heruntergeladen, konnte aber nicht gelesen werden!").show();
                     return;
@@ -200,6 +201,31 @@ public class NewMainActivity extends RoboAppCompatActivity implements OnFoodItem
 
         EditFoodDialogFragment editFoodDialogFragment = EditFoodDialogFragment.newInstance(food);
         editFoodDialogFragment.show(fragmentTransaction, EditFoodDialogFragment.TAG);
+    }
+
+    @Override
+    public void onSearchOpened() {
+
+    }
+
+    @Override
+    public void onSearchCleared() {
+
+    }
+
+    @Override
+    public void onSearchClosed() {
+
+    }
+
+    @Override
+    public void onSearchTermChanged() {
+        displayFoods(false);
+    }
+
+    @Override
+    public void onSearch(String s) {
+
     }
 
     private AlertDialog buildTextAlertDialog(String text) {
