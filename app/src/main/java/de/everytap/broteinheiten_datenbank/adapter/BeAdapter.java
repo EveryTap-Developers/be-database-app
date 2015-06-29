@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -60,9 +59,8 @@ public class BeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             BeViewHolder beViewHolder = (BeViewHolder) holder;
 
             Food food = foodList.get(position);
-            beViewHolder.userCreated.setVisibility(food.isUserCreated() ? View.VISIBLE : View.GONE);
             if (!food.isUserCreated()) {
-                beViewHolder.rootView.setBackgroundColor(Color.WHITE); //Nur UserCreated Items touchable
+                beViewHolder.rootView.setBackgroundColor(Color.WHITE); //Only UserCreated items touchable
             } else {
                 beViewHolder.rootView.setBackgroundResource(R.drawable.item_background_ripple);
             }
@@ -99,7 +97,6 @@ public class BeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static class BeViewHolder extends RecyclerView.ViewHolder {
 
         public View rootView;
-        public ImageView userCreated;
         public TextView foodName;
         public TextView beAmount;
         public TextView amount;
@@ -107,7 +104,6 @@ public class BeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         public BeViewHolder(View itemView) {
             super(itemView);
             rootView = itemView;
-            userCreated = (ImageView) rootView.findViewById(R.id.user_created_icon);
             foodName = (TextView) rootView.findViewById(R.id.food);
             beAmount = (TextView) rootView.findViewById(R.id.be);
             amount = (TextView) rootView.findViewById(R.id.amount);
