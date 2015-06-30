@@ -74,7 +74,7 @@ public class DatabaseFragmentSliding extends RoboFragment implements DrawerLayou
         if (openDb()) { //Daten anzeigen
             displayFoods(null);
         } else {
-            Utils.makeOkDialog("Konnte Datenbank nicht öffnen!", getActivity());
+            Utils.makeOkDialog(getActivity(), "Konnte Datenbank nicht öffnen!");
         }
     }
 

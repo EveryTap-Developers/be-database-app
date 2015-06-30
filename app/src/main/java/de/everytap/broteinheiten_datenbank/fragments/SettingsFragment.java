@@ -3,11 +3,16 @@ package de.everytap.broteinheiten_datenbank.fragments;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.support.v7.app.AlertDialog;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.sql.SQLException;
 
 import de.everytap.broteinheiten_datenbank.R;
+import de.everytap.broteinheiten_datenbank.Utils.Utils;
 import de.everytap.broteinheiten_datenbank.database.db.BeDataSource;
 
 /**
@@ -20,6 +25,8 @@ public class SettingsFragment extends PreferenceFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setHasOptionsMenu(true);
 
         addPreferencesFromResource(R.xml.preferences);
 
@@ -46,5 +53,24 @@ public class SettingsFragment extends PreferenceFragment {
                 return true;
             }
         });
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.settings_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.menu_credits:
+                AlertDialog creditsDialog = Utils.makeOkDialog(getActivity(), getResources().getString(R.string.credits));
+                creditsDialog.setTitle("Credits");
+                creditsDialog.show();
+
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

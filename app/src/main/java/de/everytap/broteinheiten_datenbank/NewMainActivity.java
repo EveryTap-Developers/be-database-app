@@ -2,7 +2,6 @@ package de.everytap.broteinheiten_datenbank;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
@@ -22,6 +21,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.everytap.broteinheiten_datenbank.Utils.Utils;
 import de.everytap.broteinheiten_datenbank.adapter.BeAdapter;
 import de.everytap.broteinheiten_datenbank.database.db.BeDataSource;
 import de.everytap.broteinheiten_datenbank.database.db.DatabaseManager;
@@ -68,7 +68,7 @@ public class NewMainActivity extends RoboAppCompatActivity implements OnFoodItem
         } catch (SQLException e) {
             e.printStackTrace();
 
-            buildTextAlertDialog("Konnte Datenbank nicht öffnen!").show();
+            Utils.makeOkDialog(this, "Konnte Datenbank nicht öffnen!").show();
         }
 
         displayFoods(false);
@@ -112,12 +112,12 @@ public class NewMainActivity extends RoboAppCompatActivity implements OnFoodItem
             String searchTerm = searchBox.getSearchText();
             ArrayList<Food> foodList = source.getData(searchTerm, false);
             if (foodList == null) {
-                buildTextAlertDialog("Konnte Daten nicht lesen!").show();
+                Utils.makeOkDialog(this, "Konnte Daten nicht lesen!").show();
                 return;
             }
             if (searchTerm.isEmpty() && foodList.size() == 0) {
                 if (calledByUpdater) {
-                    buildTextAlertDialog("Datenbank heruntergeladen, konnte aber nicht gelesen werden!").show();
+                    Utils.makeOkDialog(this, "Datenbank heruntergeladen, konnte aber nicht gelesen werden!").show();
                     return;
                 }
                 //Not downloaded yet(or someone deleted the db entries from outside :D)
@@ -176,7 +176,7 @@ public class NewMainActivity extends RoboAppCompatActivity implements OnFoodItem
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        AlertDialog alertDialog = buildTextAlertDialog(text);
+                        AlertDialog alertDialog = Utils.makeOkDialog(NewMainActivity.this, text);
                         progressDialog.dismiss();
                         alertDialog.show();
                     }
@@ -241,17 +241,5 @@ public class NewMainActivity extends RoboAppCompatActivity implements OnFoodItem
     @Override
     public void onSearch(String s) {
 
-    }
-
-    private AlertDialog buildTextAlertDialog(String text) {
-        return new AlertDialog.Builder(this)
-                .setMessage(text)
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .create();
     }
 }

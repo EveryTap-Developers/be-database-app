@@ -150,7 +150,7 @@ public class DatabaseFragment extends RoboFragment implements DrawerLayout.Drawe
         if (openDb()) { //Daten anzeigen
             databaseWork(getArguments() == null ? "" : getArguments().getString(ARG_QUERY), onlyUserCreatedItems); //Like a boss!
         } else {
-            Utils.makeOkDialog("Konnte Datenbank nicht öffnen!", getActivity());
+            Utils.makeOkDialog(getActivity(), "Konnte Datenbank nicht öffnen!");
         }
     }
 
@@ -169,7 +169,7 @@ public class DatabaseFragment extends RoboFragment implements DrawerLayout.Drawe
             Log.i("Database", "Reopen Database");
             if (!openDb()) { //Wieder öffnen, sollte nur einmal ausgeführt werden
                 //Nicht erfolgreich
-                Utils.makeOkDialog("Konnte Datenbank nicht öffnen!", getActivity());
+                Utils.makeOkDialog(getActivity(), "Konnte Datenbank nicht öffnen!");
                 return;
             }
         }
