@@ -3,16 +3,17 @@ package de.everytap.broteinheiten_datenbank.fragments;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
-import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.mikepenz.aboutlibraries.Libs;
+import com.mikepenz.aboutlibraries.LibsBuilder;
+
 import java.sql.SQLException;
 
 import de.everytap.broteinheiten_datenbank.R;
-import de.everytap.broteinheiten_datenbank.Utils.Utils;
 import de.everytap.broteinheiten_datenbank.database.db.BeDataSource;
 
 /**
@@ -47,7 +48,6 @@ public class SettingsFragment extends PreferenceFragment {
                 dataSource.deleteEverything();
                 dataSource.close();
 
-                //Erfolgsnachricht
                 Toast.makeText(getActivity(), "Lokale Datenbank gelöscht", Toast.LENGTH_SHORT).show();
 
                 return true;
@@ -65,10 +65,14 @@ public class SettingsFragment extends PreferenceFragment {
 
         switch (item.getItemId()) {
             case R.id.menu_credits:
-                AlertDialog creditsDialog = Utils.makeOkDialog(getActivity(), getResources().getString(R.string.credits));
+                /*AlertDialog creditsDialog = Utils.makeOkDialog(getActivity(), getResources().getString(R.string.credits));
                 creditsDialog.setTitle("Credits");
-                creditsDialog.show();
+                creditsDialog.show();*/
 
+                new LibsBuilder()
+                        .withFields(R.string.class.getFields())
+                        .withActivityStyle(Libs.ActivityStyle.LIGHT_DARK_TOOLBAR)
+                        .start(getActivity());
                 return true;
         }
         return super.onOptionsItemSelected(item);

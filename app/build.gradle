@@ -55,6 +55,10 @@ dependencies {
     compile 'it.neokree:MaterialNavigationDrawer:1.+'
     compile 'com.jpardogo.materialtabstrip:library:1.0.9'
 
+    compile('com.mikepenz:aboutlibraries:5.0.5@aar') {
+        transitive = true
+    }
+
     compile(name: 'OverflowPersistentSearch', ext: 'aar')
     //compile 'com.quinny898.library.persistentsearch:library:1.+'
 }
