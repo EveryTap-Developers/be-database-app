@@ -12,7 +12,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupMenu;
 
 import com.quinny898.library.persistentsearch.SearchBox;
 
@@ -32,7 +34,7 @@ import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 
 @ContentView(R.layout.activity_new_main)
-public class NewMainActivity extends RoboAppCompatActivity implements OnFoodItemClickListener, SearchBox.SearchListener {
+public class NewMainActivity extends RoboAppCompatActivity implements OnFoodItemClickListener, SearchBox.SearchListener, PopupMenu.OnMenuItemClickListener {
 
     private static final String URL_TO_DATABASE_JSON = "http://everytap.de/datenbank.txt";
 
@@ -51,6 +53,8 @@ public class NewMainActivity extends RoboAppCompatActivity implements OnFoodItem
         searchBox.setLogoText("Be-Datenbank");
         searchBox.setMenuVisibility(View.INVISIBLE);
         searchBox.setSearchListener(this);
+        searchBox.setOverflowMenu(R.menu.main_activity_menu);
+        searchBox.setOverflowMenuItemClickListener(this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -75,7 +79,6 @@ public class NewMainActivity extends RoboAppCompatActivity implements OnFoodItem
         super.onPause();
 
         source.close();
-        source = null;
     }
 
     @Override
@@ -86,6 +89,18 @@ public class NewMainActivity extends RoboAppCompatActivity implements OnFoodItem
         }
 
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                startActivity(new Intent(this, SettingsActivity.class));
+                return true;
+        }
+
+        return false;
     }
 
     /**

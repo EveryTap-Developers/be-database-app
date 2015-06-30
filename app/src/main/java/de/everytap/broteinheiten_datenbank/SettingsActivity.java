@@ -46,7 +46,6 @@ public class SettingsActivity extends RoboActionBarActivity{
 
         switch (item.getItemId()) {
             case R.id.menu_credits:
-
                 new AlertDialog.Builder(this)
                         .setTitle("Credits")
                         .setMessage(R.string.credits)

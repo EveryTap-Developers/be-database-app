@@ -34,6 +34,9 @@ repositories {
     maven {
         url "https://oss.sonatype.org/content/repositories/snapshots"
     }
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 dependencies {
@@ -52,5 +55,6 @@ dependencies {
     compile 'it.neokree:MaterialNavigationDrawer:1.+'
     compile 'com.jpardogo.materialtabstrip:library:1.0.9'
 
-    compile 'com.quinny898.library.persistentsearch:library:1.+'
+    compile(name: 'OverflowPersistentSearch', ext: 'aar')
+    //compile 'com.quinny898.library.persistentsearch:library:1.+'
 }
